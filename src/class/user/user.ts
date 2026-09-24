@@ -14,6 +14,10 @@ export class User {
   }
 
   verify(): void {
-    this.isVerified = true
+    if (this.isAdult()) {
+      this.isVerified = true
+    } else {
+      this.isVerified = false
+    }
   }
 }

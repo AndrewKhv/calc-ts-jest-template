@@ -11,15 +11,20 @@ describe('User', () => {
   test('returns true when the user is 18 years old or older', () => {
     const user = new User('Anna', 20)
 
-    // TODO: verify is isAdult
+    expect(user.isAdult()).toBeTruthy();
   })
 
   test('returns false when the user is younger than 18', () => {
-    // TODO: create a user younger than 18 and check that isAdult() returns false.
+    const user = new User('Anna', 16);
+
+    expect(user.isAdult()).toBeFalsy()
   })
 
-
   test('verifies the user', () => {
-    // TODO: create a user, call verify(), and check that isVerified is true.
+    const user = new User('Anna', 18);
+
+    user.verify();
+
+    expect(user.isVerified).toBeTruthy()
   })
 })
