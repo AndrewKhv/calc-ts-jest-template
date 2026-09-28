@@ -1,3 +1,5 @@
+import {AccountStatuses} from "../../../support/enum";
+
 export class Account {
   balance: number
   status: string
@@ -6,9 +8,9 @@ export class Account {
     this.balance = initialBalance
 
     if (initialBalance < 0) {
-      this.status = 'PENDING'
+      this.status = AccountStatuses.Pending
     } else {
-      this.status = 'ACTIVE'
+      this.status = AccountStatuses.Active
     }
   }
 
@@ -20,5 +22,11 @@ export class Account {
     this.balance = this.balance + amount
   }
 
-  // implement withdrawal
+  withdraw(amount: number): void {
+    if (amount > this.balance) {
+      return
+    }
+
+    this.balance = this.balance - amount
+  }
 }
