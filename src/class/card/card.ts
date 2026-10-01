@@ -1,5 +1,5 @@
 export class Card {
-  cardNumber: string
+  private readonly cardNumber: string
   dailyLimit: number
   spentToday: number
   isBlocked: boolean
@@ -20,9 +20,12 @@ export class Card {
     this.isBlocked = false
   }
 
-  // TODO: fix the implementation
+  lastFourDigits(): string {
+    return this.cardNumber.slice(-4);
+  }
+
   maskCardNumber(): string {
-    return '****'
+    return '**** **** **** ' + this.cardNumber.slice(-4)
   }
 
   // returns true if the payment went through, false if it was declined
